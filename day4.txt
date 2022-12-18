@@ -1,0 +1,111 @@
+##################################################################################
+PART 1
+##################################################################################
+
+#include <bits/stdc++.h>
+#define nl "\n"
+using namespace std;
+
+void solve()
+{
+    string temp;
+
+    int low1, low2, high1, high2; 
+    string value = "";
+    int pos; 
+    int total = 0;
+    while (cin >> temp){
+        pos = temp.find("-");
+        low1 = stoi(temp.substr(0, pos));
+        temp.erase(0, pos+1);
+
+        
+        
+        pos = temp.find(",");
+        high1= stoi(temp.substr(0, pos));
+        temp.erase(0,pos+1);
+
+        pos = temp.find("-");
+        low2 = stoi(temp.substr(0, pos));
+        temp.erase(0, pos+1);
+
+        high2 = stoi(temp);
+
+        if(low1 >= low2 && high1 <= high2){
+            ++total;
+        }else if(low1 <= low2 && high1 >= high2){
+            ++total;
+        }
+
+    }
+
+    cout << total;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+#ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.out", "w", stdout);
+#endif
+
+    solve();
+}
+
+
+##################################################################################
+PART 2
+##################################################################################
+
+#include <bits/stdc++.h>
+#define nl "\n"
+using namespace std;
+
+void solve()
+{
+    string temp;
+
+    int low1, low2, high1, high2; 
+    string value = "";
+    int pos; 
+    int total = 0;
+    while (cin >> temp){
+        pos = temp.find("-");
+        low1 = stoi(temp.substr(0, pos));
+        temp.erase(0, pos+1);
+
+        
+        
+        pos = temp.find(",");
+        high1= stoi(temp.substr(0, pos));
+        temp.erase(0,pos+1);
+
+        pos = temp.find("-");
+        low2 = stoi(temp.substr(0, pos));
+        temp.erase(0, pos+1);
+
+        high2 = stoi(temp);
+
+        if(low1 <= high2 && high1 >= low2){
+            ++total; 
+        }
+    }
+
+    cout << total;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+#ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.out", "w", stdout);
+#endif
+
+    solve();
+}
