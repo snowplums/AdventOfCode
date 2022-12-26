@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+#define nl "\n"
+using namespace std; 
+
+
+void solve(){
+    string temp;
+    getline(cin, temp);
+    temp +=" ";
+    int size = temp.length()/4; 
+
+
+    vector<vector<char>> arr; 
+
+    for(int i=0; i < size; ++i){
+        vector<char> temp;
+        arr.push_back(temp);
+    }
+    vector<string> input; 
+
+    int rows =0; 
+
+    while(temp.find("[") != string::npos){    
+        temp += " ";
+        ++rows;
+        input.push_back(temp);
+        getline(cin, temp);
+    }
+
+    for(int i =0;i<size;++i){
+        for(int j=0;j<input.size();++j){
+            if(input[j][1] != ' '){
+                arr[i].push_back(input[j][1]);
+            }
+            input[j] = input[j].substr(4,input[j].length());
+        }
+    }
+
+    for(int i =0; i < arr.size();++i){
+         reverse(arr[i].begin(), arr[i].end());
+    }
+    getline(cin, temp);
+
+    int n, p1, p2; 
+    while(getline(cin, temp)){
+        
+        temp = temp.substr(5, temp.length());
+        
+        n = stoi(temp.substr(0, temp.find("from")-1));
+        temp = temp.substr(temp.find("from ") + 5, temp.length());
+        p1 = stoi(temp.substr(0, temp.find("to")-1))-1;
+
+        p2 = stoi(temp.substr(temp.find("to") + 3, temp.length()))-1;
+        
+
+        vector<char> lyst = {arr[p1].end() - n, arr[p1].end()};
+        
+        arr[p1].resize(arr[p1].size()-n);
+        arr[p2].insert(arr[p2].end(), lyst.begin(), lyst.end());
+    }
+    for(int i=0; i<size;++i){
+        cout << arr[i][arr[i].size()-1];
+    }
+}
+
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    #ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.out", "w", stdout);
+    #endif
+
+
+    solve();
+
+}
+

@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+#define nl "\n"
+using namespace std; 
+
+char lyst[14]; 
+
+void shift(char c){
+    for(int i =0; i<13;++i){
+        lyst[i] = lyst[i+1];
+    }
+    lyst[13] = c;
+}
+
+bool check(){
+    for(int i =0; i <13; ++i){
+        for(int j=i+1; j<14; ++j){
+            if(lyst[i] == lyst[j]){
+                
+                return false;
+                
+            }
+        }
+    }
+    return true;
+}
+
+void solve(){
+    
+    string str;
+    cin >> str;
+
+    for(int i=0;i<14;++i){
+        lyst[i] = str[i];
+    }
+    
+    for(int i =14;i<str.length(); ++i){
+        
+        shift(str[i]);
+
+        if(check()){
+            cout << i + 1;
+            return;
+        }
+        
+    }
+    
+}
+
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    #ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.out", "w", stdout);
+    #endif
+
+
+    solve();
+
+}
+

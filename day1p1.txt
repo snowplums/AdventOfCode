@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+#define nl "\n"
+using namespace std;
+
+void solve()
+{
+    long long temp = 0, max = 0;
+    string inp;
+    while (getline(cin, inp))
+    {
+        if (inp == "")
+        {
+            // cout << "worked" << nl;
+            if (temp > max)
+            {
+                max = temp;
+            }
+            temp = 0;
+        }
+        else
+        {
+            temp += stoi(inp);
+        }
+    }
+
+    cout << max;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+#ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.out", "w", stdout);
+#endif
+
+    solve();
+}

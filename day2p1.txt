@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#define nl "\n"
+using namespace std;
+
+void solve()
+{
+    int total = 0;
+
+    string in1, in2;
+    while (cin >> in1 >> in2)
+    {
+        if (in2 == "X")
+        {
+            ++total;
+            if (in1 == "A")
+                total += 3;
+            if (in1 == "C")
+                total += 6;
+        }
+        if (in2 == "Y")
+        {
+            total += 2;
+            if (in1 == "A")
+                total += 6;
+            if (in1 == "B")
+                total += 3;
+        }
+        if (in2 == "Z")
+        {
+            total += 3;
+            if (in1 == "C")
+                total += 3;
+            if (in1 == "B")
+                total += 6;
+        }
+    }
+    cout << total;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+#ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.out", "w", stdout);
+#endif
+
+    solve();
+}

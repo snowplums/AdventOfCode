@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+#define nl "\n"
+using namespace std;
+
+int findVal(char c)
+{
+    int num = (int)c;
+    if (num > 91)
+    {
+        return num - 96;
+    }
+    else
+    {
+        return num - 38;
+    }
+}
+
+int calcVal(string temp)
+{
+    for (int i = 0; i < temp.length() / 2; ++i)
+    {
+        for (int j = temp.length() / 2; j < temp.length(); ++j)
+        {
+            if (temp[i] == temp[j])
+            {
+                return findVal(temp[i]);
+            }
+        }
+    }
+    return 0;
+}
+
+void solve()
+{
+    long total = 0;
+    string temp;
+    while (cin >> temp)
+    {
+        total += calcVal(temp);
+    }
+    cout << total;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+#ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.out", "w", stdout);
+#endif
+
+    solve();
+}
